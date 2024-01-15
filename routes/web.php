@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
 
@@ -25,4 +27,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
+}); */
+
+Route::get('/',[UserController::class,'index']);
+Route::get('/users',[UserController::class,'index']);
+Route::get('/contact',[PagesController::class,'contact']);
+Route::get('/about',[PagesController::class,'about']);
+Route::get('/tasks',[\App\Http\Controllers\TaskController::class,'index']);
+
